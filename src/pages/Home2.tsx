@@ -1,14 +1,14 @@
 import React from 'react';
-import Logo from '../assets/logo.svg'
 import { FiArrowRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import HeaderBar from '../components/HeaderBar';
 
 import '../styles/landing.css'
 
 function Home2() {
   return (
     <div id='Landing-page'>
-      <img src={Logo} alt='Reactive Budget' />
+      <HeaderBar />
       <div className="content-wrapper">
         <h1>With an elegant interface</h1>
         <p>Budgeting was never this simple and pleasurable. See how much you spent and plan your next month.</p>
