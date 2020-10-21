@@ -2,12 +2,12 @@
   display: grid;
   margin-left: 12%;
   grid-template-columns: 1fr;
-  grid-template-rows: .6fr 1fr;
+  grid-template-rows: 200px 550px;
 }
-
+/* 
 #Landing-page img {
   margin-top: 90px;
-}
+} */
 
 #Landing-page h1 {
   font-size: 90px;
