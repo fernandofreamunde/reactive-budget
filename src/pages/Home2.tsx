@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 
 import '../styles/landing.css'
 
-function Landing() {
+function Home2() {
   return (
     <div id='Landing-page'>
       <img src={Logo} alt='Reactive Budget' />
       <div className="content-wrapper">
-        <h1>Control Your Expenses by budgeting</h1>
-        <p>See where you are spending your money, save more by understanding your expending habits.</p>
-          <Link to='home2' className="next-page-button">
+        <h1>With an elegant interface</h1>
+        <p>Budgeting was never this simple and pleasurable. See how much you spent and plan your next month.</p>
+          <Link to='private' className="next-page-button">
             <FiArrowRight size='26' color='#808080' />
           </Link>
       </div>
@@ -20,7 +20,7 @@ function Landing() {
   )
 }
 
-export default Landing;
+export default Home2;
 
 
 // Notes:
