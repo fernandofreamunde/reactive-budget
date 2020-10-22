@@ -1,4 +1,4 @@
-#Pricing-page {
+ #Pricing-page {
   display: grid;
   margin-left: 12%;
   grid-template-columns: 1fr;
@@ -21,11 +21,11 @@
   position: relative;
   display: grid;
   grid-template-columns: 50% 50%;
-}
+} 
 
 #Pricing-page .product-description {
   margin-top: 12%;
-  margin-left: 20%;
+  margin-left: 5%;
 }
 
 #Pricing-page .product-description h3 {
@@ -37,17 +37,4 @@
   list-style: '- ';
   margin-left: 10px;
   font-size: 24px;
-}
-
-#Pricing-page .next-page-button {
-  width: 64px;
-  height: 64px;
-  border-radius: 15px;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  right:0px;
-  bottom:0px;
 }

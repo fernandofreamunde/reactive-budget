@@ -1,28 +1,23 @@
 import React from 'react';
-import { FiArrowRight } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
 import HeaderBar from '../components/HeaderBar';
-
-import '../styles/landing.css'
+import PageContent from '../components/PageContent';
 
 function Home2() {
+  const left = (
+    <div>
+      <h1>With an elegant interface</h1>
+      <p>Budgeting was never this simple and pleasurable. See how much you spent and plan your next month.</p>
+    </div>
+  )
   return (
     <div id='Landing-page'>
       <HeaderBar />
-      <div className="content-wrapper">
-        <h1>With an elegant interface</h1>
-        <p>Budgeting was never this simple and pleasurable. See how much you spent and plan your next month.</p>
-          <Link to='private' className="next-page-button">
-            <FiArrowRight size='26' color='#808080' />
-          </Link>
-      </div>
+      <PageContent
+        leftSide={left}
+        linkTarget='private'
+      />
     </div>
   )
 }
 
 export default Home2;
-
-
-// Notes:
-// See CSS grid -> apply it to the #landing-page
-// position the elements 
