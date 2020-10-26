@@ -55,9 +55,11 @@ function Listing() {
       </aside>
 
       <main id='dataView'>
-        {entries.map(entry =>{
-          return (<h6>entry</h6>)
-        })}
+        <div className="entriesList">
+          {entries.map(entry =>{
+            return (<h6>entry</h6>)
+          })}
+        </div>
 
         <form className='entryForm'>
           <input type='text' name='date' value='' placeholder='01-01-2020' />
@@ -68,6 +70,15 @@ function Listing() {
           <button id='insertIncome' className='inactive'><FiPlus size='26' /></button>
           <button id='insertExpense'><FiMinus size='26' /></button>
         </form>
+
+        <div className='statusReport'>
+          <p>Expenses:</p>
+          <p></p>
+          <p>Income:</p>
+          <p></p>
+          <p>Balance</p>
+          <p></p>
+        </div>
       </main>
     </div>
   )
