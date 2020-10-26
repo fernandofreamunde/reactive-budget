@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Logo from '../assets/logo.svg';
+import Logo from '../assets/Reactive.svg';
+import LogoText from '../assets/ReactiveBudget.svg';
+import '../styles/components/sidebar.css';
 
 interface Entry {
   id: String,
@@ -33,22 +35,26 @@ function Listing() {
 
   return (
     <div>
-      <aside className='sidebar'>
+      <aside id='sidebar'>
         <img src={Logo} alt='Reactive Budget' />
         <nav>
           <ul>
             <li>
-              <a href='#'>Main</a>
+              <p className='menuTitle'>Select a view</p>
             </li>
             <li>
-              <a href='#'>Monthly</a>
+              <a href='#' className='menuButton'>Main</a>
+            </li>
+            <li>
+              <a href='#' className='menuButton'>Monthly</a>
             </li>
           </ul>
         </nav>
+        <img className='bottomImage' src={LogoText} alt='Reactive Budget' />
       </aside>
 
       <main>
-        {entries.map((entry, index) =>{
+        {entries.map(entry =>{
           return (<h6>entry</h6>)
         })}
       </main>
