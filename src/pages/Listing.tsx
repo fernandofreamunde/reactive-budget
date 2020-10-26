@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FiMinus, FiPlus } from 'react-icons/fi';
 import Logo from '../assets/Reactive.svg';
 import LogoText from '../assets/ReactiveBudget.svg';
 import '../styles/components/sidebar.css';
@@ -34,7 +35,7 @@ function Listing() {
   }
 
   return (
-    <div>
+    <div id='listings'>
       <aside id='sidebar'>
         <img src={Logo} alt='Reactive Budget' />
         <nav>
@@ -53,10 +54,20 @@ function Listing() {
         <img className='bottomImage' src={LogoText} alt='Reactive Budget' />
       </aside>
 
-      <main>
+      <main id='dataView'>
         {entries.map(entry =>{
           return (<h6>entry</h6>)
         })}
+
+        <form className='entryForm'>
+          <input type='text' name='date' value='' placeholder='01-01-2020' />
+          <input type='text' name='description' value='' placeholder='supermarket' />
+          <input type='text' name='type' value='' placeholder='groceries' />
+          <input type='text' name='bank' value='' placeholder='ABN' />
+          <input type='text' name='value' value='' placeholder='15.00 $' />
+          <button id='insertIncome' className='inactive'><FiPlus size='26' /></button>
+          <button id='insertExpense'><FiMinus size='26' /></button>
+        </form>
       </main>
     </div>
   )

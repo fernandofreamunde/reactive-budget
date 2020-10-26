@@ -1,7 +1,12 @@
+#listings {
+  position: relative;
+  display: grid;
+  grid-template-columns: 400px auto;
+  grid-template-rows: 100vh;
+}
+
 #sidebar {
-  position: fixed;;
   background: #333;
-  height: 100%;
   width: 400px;
 }
 
@@ -64,3 +69,53 @@
 
 }
 
+/*  ----------------  */
+
+#dataView {
+  left: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+#dataView form {
+  background: #F5F8FA;
+  border: 1px solid #D3E2E5;
+  height: 64px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#dataView form input {
+  width: 150px;
+  border:none;
+  background: none;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+#dataView form button {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border:none;
+  color: #F5F8FA;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#dataView form button.inactive {
+  position: relative;
+  top: 15px;
+  right: -75px;
+}
+
+#insertIncome {
+  background: #27ae60;
+}
+#insertExpense {
+  background: #eb5757;
+}
