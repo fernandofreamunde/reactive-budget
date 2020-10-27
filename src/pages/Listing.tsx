@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { FiMinus, FiPlus } from 'react-icons/fi';
-import Logo from '../assets/Reactive.svg';
-import LogoText from '../assets/ReactiveBudget.svg';
-import '../styles/components/sidebar.css';
+import Sidebar from '../components/Sidebar';
+import '../styles/components/dataview.css';
 
 interface Entry {
-  id: String,
+  id: string,
   date: Date,
   description: String,
   type: String,
@@ -21,12 +20,28 @@ function Listing() {
       id: 'someId',
       date: new Date(),
       description: 'this is a description',
-      type: 'tyoe',
+      type: 'tyoe0',
+      bank: 'mybanc',
+      amount: 1234,
+    }
+    let ent2 = {
+      id: 'someId2',
+      date: new Date(),
+      description: 'this is a description',
+      type: 'tyoe1',
+      bank: 'mybanc',
+      amount: 1234,
+    }
+    let ent3 = {
+      id: 'someId3',
+      date: new Date(),
+      description: 'this is a description',
+      type: 'tyoe2',
       bank: 'mybanc',
       amount: 1234,
     }
     setTimeout(() => {
-      setEntries([ent,ent]);
+      setEntries([ent,ent2,ent3].reverse());
     }, 123);
   }, []);
 
@@ -36,28 +51,22 @@ function Listing() {
 
   return (
     <div id='listings'>
-      <aside id='sidebar'>
-        <img src={Logo} alt='Reactive Budget' />
-        <nav>
-          <ul>
-            <li>
-              <p className='menuTitle'>Select a view</p>
-            </li>
-            <li>
-              <a href='#' className='menuButton'>Main</a>
-            </li>
-            <li>
-              <a href='#' className='menuButton'>Monthly</a>
-            </li>
-          </ul>
-        </nav>
-        <img className='bottomImage' src={LogoText} alt='Reactive Budget' />
-      </aside>
+      <Sidebar />
 
       <main id='dataView'>
+
+      <div>
         <div className="entriesList">
           {entries.map(entry =>{
-            return (<h6>entry</h6>)
+            return (
+              <div key={entry.id} className="entry" >
+                <span>{entry.date.getDay() +'-'+entry.date.getMonth() +'-'+entry.date.getFullYear()}</span>
+                <span>{entry.description}</span>
+                <span>{entry.type}</span>
+                <span>{entry.bank}</span>
+                <span>{entry.amount}</span>
+              </div>
+            );
           })}
         </div>
 
@@ -66,18 +75,18 @@ function Listing() {
           <input type='text' name='description' value='' placeholder='supermarket' />
           <input type='text' name='type' value='' placeholder='groceries' />
           <input type='text' name='bank' value='' placeholder='ABN' />
-          <input type='text' name='value' value='' placeholder='15.00 $' />
-          <button id='insertIncome' className='inactive'><FiPlus size='26' /></button>
-          <button id='insertExpense'><FiMinus size='26' /></button>
+          <input type='text' name='amount' value='' placeholder='15.00 $' />
+          <div className="buttonBox">
+            <button id='income' className='inactive'><FiPlus size='26' /></button>
+            <button id='expense'><FiMinus size='26' /></button>
+          </div>
         </form>
 
         <div className='statusReport'>
-          <p>Expenses:</p>
-          <p></p>
-          <p>Income:</p>
-          <p></p>
-          <p>Balance</p>
-          <p></p>
+          <span >Expenses: <span className='expense' >123</span></span>
+          <span >Income: <span className='income' >123</span></span>
+          <span>Balance: 123</span>
+        </div>
         </div>
       </main>
     </div>

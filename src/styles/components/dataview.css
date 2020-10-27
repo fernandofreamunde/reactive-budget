@@ -1,0 +1,100 @@
+#listings {
+  position: relative;
+  display: grid;
+  grid-template-columns: 400px auto;
+  grid-template-rows: 100vh;
+}
+
+#dataView {
+  left: 400px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#dataView .entriesList {
+  width: 50vw;
+  min-height: 50vh;
+  max-height: 80vh;
+  height: fit-content;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#dataView .entry {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: 800;
+  font-size: 25px;
+  line-height: 42px;
+}
+
+#dataView .entryForm {
+  margin-top: 5%;
+  background: #F5F8FA;
+  border: 1px solid #D3E2E5;
+  height: 64px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#dataView .entryForm input {
+  width: 150px;
+  border:none;
+  background: none;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+#dataView .entryForm .buttonBox {
+  position: relative;
+}
+
+#dataView .entryForm .buttonBox button {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  right: -2px;
+  top: -32px;
+  border:none;
+  color: #F5F8FA;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#dataView .entryForm button.inactive {
+  top: -20px;
+  right: -20px;
+  z-index: -1;
+}
+
+#income {
+  background: #27ae60;
+}
+#expense {
+  background: #eb5757;
+}
+
+.income {
+  color: #27ae60;
+}
+.expense {
+  color: #eb5757;
+}
+
+#dataView .statusReport {
+  width: 50vw;
+  margin-top: 5%;
+  min-height: 64px;
+  max-height: 80vh;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
+  font-size: 25px;
+  line-height: 42px;
+}
