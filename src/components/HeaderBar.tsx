@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/logo.svg';
-import '../styles/heading.css';
+import '../styles/components/heading.css';
 
 export default function HeaderBar() {
   return (
