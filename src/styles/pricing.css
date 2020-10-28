@@ -1,0 +1,40 @@
+ #Pricing-page {
+  display: grid;
+  margin-left: 12%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 200px 550px;
+}
+
+#Pricing-page h1 {
+  font-size: 90px;
+  font-weight: 900;
+  line-height: 71px;
+}
+
+#Pricing-page h1, p {
+  max-width: 600px;
+  margin-top: 18%;
+}
+
+#Pricing-page .content-wrapper {
+  max-width: 85%;
+  position: relative;
+  display: grid;
+  grid-template-columns: 50% 50%;
+} 
+
+#Pricing-page .product-description {
+  margin-top: 12%;
+  margin-left: 5%;
+}
+
+#Pricing-page .product-description h3 {
+  font-size: 32px;
+  margin-top: 30px;
+}
+
+#Pricing-page .product-description li {
+  list-style: '- ';
+  margin-left: 10px;
+  font-size: 24px;
+}

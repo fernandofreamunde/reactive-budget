@@ -2,23 +2,22 @@ import React from 'react';
 import HeaderBar from '../components/HeaderBar';
 import PageContent from '../components/PageContent';
 
-function Landing() {
+function Home2() {
   const left = (
     <div>
-      <h1>Control Your Expenses by budgeting</h1>
-      <p>See where you are spending your money, save more by understanding your expending habits.</p>
+      <h1>With an elegant interface</h1>
+      <p>Budgeting was never this simple and pleasurable. See how much you spent and plan your next month.</p>
     </div>
   )
-
   return (
     <div id='Landing-page'>
       <HeaderBar />
       <PageContent
         leftSide={left}
-        linkTarget='home2'
+        linkTarget='private'
       />
     </div>
   )
 }
 
-export default Landing;
+export default Home2;

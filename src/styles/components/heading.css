@@ -1,0 +1,23 @@
+#HeaderBar {
+  max-width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#HeaderBar nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+#HeaderBar nav .button {
+  font-size: 32px;
+  font-weight: 800;
+  margin-left:30px;
+  color: #fff;
+  text-decoration: none;
+}
+
+#HeaderBar nav .button:hover {
+  text-decoration: underline;
+}
