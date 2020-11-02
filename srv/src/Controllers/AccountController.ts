@@ -9,5 +9,14 @@ export default {
     const account = new AccountService();
 
     return response.status(201).json(account.createAccount(email, password));
+  },
+
+  async authentication(request: Request, response: Response) {
+
+    const { email, password } = request.body;
+
+    const account = new AccountService();
+
+    return response.status(201).json(account.authenticate(email, password));
   }
 }

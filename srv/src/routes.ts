@@ -1,11 +1,12 @@
 import { Router } from "express";
 import MainController from "./Controllers/MainController";
-import UserController from "./Controllers/AccountController";
+import AccountController from "./Controllers/AccountController";
 
 
 const routes = Router();
 
 routes.get('/', MainController.index);
-routes.post('/registration', UserController.registration);
+routes.post('/registration', AccountController.registration);
+routes.post('/login', AccountController.authentication);
 
 export default routes;
