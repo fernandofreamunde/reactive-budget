@@ -2,6 +2,7 @@ import { getManager } from "typeorm";
 import bcrypt from "bcrypt";
 import Account from "../Entity/Account";
 import AccountRepository from "../repository/AccountRepository";
+import TokenService from "./TokenService";
 
 export default class AccountService {
   private accountRepository:AccountRepository;
@@ -31,12 +32,17 @@ export default class AccountService {
   /**
    * authenticate
    */
-  public async authenticate(email:string, password:string): Promise<Account> {
+  public async authenticate(email:string, password:string): Promise<Account | null> {
     // query user by email
-    const account = await this.accountRepository.findAccountByEmail(email) ?? new Account();
+    const account = await this.accountRepository.findAccountByEmail(email);
+
+    if (account === undefined) {
+      return null;
+    }
     
     if (!this.validPassword(password, account.password)) {
-      throw new Error("Invalid Credentials");
+      return null;
+      //throw new Error("Invalid Credentials");
     }
 
     return account;

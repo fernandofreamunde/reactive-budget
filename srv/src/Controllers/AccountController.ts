@@ -1,5 +1,6 @@
 import {Request, Response } from 'express';
 import AccountService from '../Service/AccountService';
+import TokenService from '../Service/TokenService';
 
 export default {
   async registration(request: Request, response: Response) {
@@ -17,8 +18,21 @@ export default {
 
     const accountService = new AccountService();
 
-    const account = await accountService.authenticate(email, password);
+    accountService.authenticate(email, password)
+    .then(account => {
+      if (account === null) {
+        return response.status(400).json({'message': 'Bad credentials.'});
+      }
 
-    return response.status(200).json(account);
+      const tokenService = new TokenService();
+  
+      const token = tokenService.createToken(account);
+
+      return response.status(200).json({token});
+    })
+    .catch((error) => {
+      console.log(error)
+      return response.status(400).json({'message': 'Bad credentials....'});
+    });   
   }
 }
