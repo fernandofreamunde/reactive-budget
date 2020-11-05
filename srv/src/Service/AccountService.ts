@@ -41,8 +41,7 @@ export default class AccountService {
     }
     
     if (!this.validPassword(password, account.password)) {
-      return null;
-      //throw new Error("Invalid Credentials");
+      throw new Error("Invalid Credentials");
     }
 
     return account;

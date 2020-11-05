@@ -1,6 +1,12 @@
 import Account from "../Entity/Account";
 import jwt from 'jsonwebtoken';
 
+interface Jwt { 
+  account: string,
+  exp: number,
+  iat: number,
+}
+
 export default class TokenService {
   private secret_key:string;
   constructor() {
@@ -34,9 +40,9 @@ export default class TokenService {
    */
   public verifyToken(token:string) {
     console.log('Verifying token...')
-    let payload;
+    let payload: Jwt;
     try{
-      payload = jwt.verify(token, this.secret_key)
+      payload = <Jwt> jwt.verify(token, this.secret_key)
     }
     catch(e){
       console.log('Invalid token...');
@@ -57,7 +63,7 @@ export default class TokenService {
    * refreshToken
    */
   public refreshToken(oldTokenString:string) {
-    const oldToken = jwt.verify(oldTokenString, this.secret_key);
+    const oldToken = <Jwt> jwt.verify(oldTokenString, this.secret_key);
     const now = new Date();
 
     const life:number = parseInt(process.env.TOKEN_LIFE_IN_MINUTES || '1');

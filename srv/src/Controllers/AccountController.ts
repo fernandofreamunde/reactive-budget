@@ -31,8 +31,7 @@ export default {
       return response.status(200).json({token});
     })
     .catch((error) => {
-      console.log(error)
-      return response.status(400).json({'message': 'Bad credentials....'});
+      return response.status(400).json({'message': 'Bad credentials.'});
     });   
   }
 }
