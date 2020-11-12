@@ -2,21 +2,23 @@
   "type": "mysql",
   "host": "localhost",
   "port": 3306,
-  "username": "dbusername",
-  "password": "dbpw",
+  "username": "root",
+  "password": "my-secret-pw",
   "database": "reactive",
   "synchronize": true,
   "logging": false,
-  "migrations": [
-    "./migrations/*.ts"
+  "entities": [
+     "./src/Entity/*.ts"
   ],
-  "entities":[
-    "./src/entity/*.ts"
+  "migrations": [
+     "./src/migration/*.ts"
   ],
   "subscribers": [
-    "src/ormSubscriber/*.ts"
+     "./src/ormSubscriber/*.ts"
   ],
   "cli": {
-    "migrationsDir": "./migrations"
+     "entitiesDir": "./src/Entity",
+     "migrationsDir": "./src/migration",
+     "subscribersDir": "./src/ormSubscriber"
   }
 }

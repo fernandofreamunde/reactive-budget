@@ -1,12 +1,14 @@
 import { Request, Response } from 'express'
 import TokenService from '../Service/TokenService';
+import currentAccount from '../Infrastructure/currentAccount'
+import Account from '../Entity/Account';
 
 const accessMiddleware = (req: Request, resp: Response, next:Function) => {
 
     console.log('Request logged:', req.method, req.path);
 
 
-    if (req.path === '/login' || req.path === '/register') {
+    if (req.path === '/account/login' || req.path === '/account/registration') {
       next();
       return;
     }
@@ -26,6 +28,9 @@ const accessMiddleware = (req: Request, resp: Response, next:Function) => {
       resp.status(401).json({message:'Invalid token!'});
       return;
     }
+
+    const account = tokenService.getUserAccount(token);
+    currentAccount.setAccount(account);
 
     resp.setHeader('new-token', tokenService.refreshToken(token));
 
