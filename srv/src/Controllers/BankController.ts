@@ -1,34 +1,20 @@
 import { Request, Response } from "express";
-import { emit } from "process";
-import { getManager, getRepository } from "typeorm";
-import Account from "../Entity/Account";
-import { Bank } from "../Entity/Bank";
+import currentAccount from "../Infrastructure/currentAccount";
+import BankService from "../Service/BankService";
 
 export default {
   async create(request: Request, response: Response) {
 
     const { shortName, name } = request.body
 
-    console.log('HERE')
-    console.log(shortName)
-    console.log(name)
+    const bankSercive = new BankService();
+    
+    const account = await currentAccount.getAccount();
 
-    const bank = new Bank();
-    bank.name = name;
-    bank.shortName = shortName;
-    bank.createdAt = new Date().toTimeString();
-    bank.updatedAt = new Date().toTimeString();
+    const bank = await bankSercive.createBank(name, shortName, account)
 
-    const accountRepo = getRepository(Account);
-    bank.account = await accountRepo.findOneOrFail('a6dd640e-d896-4f0b-83d9-c49b755fdeba');
-
-    const em = getManager();
-    await em.save(bank);
-    // validade data
-    // push to service
-    // respond
-    //{ id, shortName, name, user, createdAt, updatedAt }
-    return response.status(201).json({message: 'wip'});
+    // TODO remove accounty details from response
+    return response.status(201).json(bank);
   },
 
   async update(request: Request, response: Response) {

@@ -18,4 +18,14 @@ export default class AccountRepository {
       .where("account.email = :email", { email})
       .getOne();
   }
+
+  /**
+   * findAccountByEmail
+   */
+  public findAccountById(id:string): Promise<Account | undefined> {
+    return this.entityManager
+      .createQueryBuilder(Account, 'account')
+      .where("account.id = :id", { id })
+      .getOne();
+  }
 }
