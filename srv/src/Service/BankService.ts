@@ -47,4 +47,13 @@ export default class BankService {
     await em.save(bank);
     return bank;
   }
+
+  /**
+   * updateBank
+   */
+  public async deleteBank(bankId:string) {
+
+    const em = getManager();
+    await em.delete(Bank, bankId);
+  }
 }

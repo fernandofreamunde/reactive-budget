@@ -41,11 +41,16 @@ export default {
   },
 
   async delete(request: Request, response: Response) {
+    const { id } = request.params
+
+    // push to service
+    const bankSercive = new BankService();
+    const bank = await bankSercive.deleteBank(id);
 
     // validade data
     // push to service
     // respond
     //{ id, shortenName, name, user, createdAt, updatedAt }
-    return response.status(200).json({message: 'wip'});
+    return response.status(200).json({message: 'deleted'});
   }
 }
