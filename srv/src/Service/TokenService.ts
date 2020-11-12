@@ -1,5 +1,6 @@
 import Account from "../Entity/Account";
 import jwt from 'jsonwebtoken';
+import AccountRepository from "../repository/AccountRepository";
 
 interface Jwt { 
   account: string,
@@ -42,7 +43,7 @@ export default class TokenService {
     console.log('Verifying token...')
     let payload: Jwt;
     try{
-      payload = <Jwt> jwt.verify(token, this.secret_key)
+      payload = this.getJwt(token);
     }
     catch(e){
       console.log('Invalid token...');
@@ -57,6 +58,17 @@ export default class TokenService {
     }
     
     return true;
+  }
+
+  /**
+   * getUserAccount
+   */
+  public async getUserAccount(token:string): Promise<Account> {
+    
+    const jwt: Jwt = this.getJwt(token);
+    const accountRepo = new AccountRepository();
+
+    return <Account> await accountRepo.findAccountById(jwt.account);
   }
 
   /**
@@ -78,6 +90,10 @@ export default class TokenService {
     });
 
     return token;
+  }
+
+  private getJwt(token:string): Jwt {
+    return <Jwt> jwt.verify(token, this.secret_key);
   }
 }
 
