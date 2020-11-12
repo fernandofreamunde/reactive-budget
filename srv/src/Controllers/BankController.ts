@@ -6,7 +6,7 @@ export default {
   async create(request: Request, response: Response) {
 
     const { shortName, name } = request.body
-
+    // TO DO validade data
     const bankSercive = new BankService();
     
     const account = await currentAccount.getAccount();
@@ -20,10 +20,15 @@ export default {
   async update(request: Request, response: Response) {
 
     // validade data
+    const { shortName, name } = request.body
+    const { id } = request.params
+
     // push to service
+    const bankSercive = new BankService();
+    const bank = await bankSercive.updateBank(id, name, shortName);
     // respond
     //{ id, shortenName, name, user, createdAt, updatedAt }
-    return response.status(200).json({message: 'wip'});
+    return response.status(200).json(bank);
   },
 
   async read(request: Request, response: Response) {
