@@ -51,6 +51,17 @@ export default class BankService {
   /**
    * updateBank
    */
+  public async listBanks() {
+
+    // todo add filtering later
+    const banks = <Bank[]> await this.bankRepository.findAll();
+
+    return banks;
+  }
+
+  /**
+   * updateBank
+   */
   public async deleteBank(bankId:string) {
 
     const em = getManager();

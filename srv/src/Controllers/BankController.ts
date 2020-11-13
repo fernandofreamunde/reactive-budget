@@ -32,12 +32,13 @@ export default {
   },
 
   async read(request: Request, response: Response) {
+    const { name, shortName } = request.query
 
-    // validade data
     // push to service
-    // respond
-    //{ id, shortenName, name, user, createdAt, updatedAt }
-    return response.status(200).json({message: 'wip'});
+    const bankSercive = new BankService();
+    const banks = await bankSercive.listBanks();
+    
+    return response.status(200).json(banks);
   },
 
   async delete(request: Request, response: Response) {
@@ -45,12 +46,8 @@ export default {
 
     // push to service
     const bankSercive = new BankService();
-    const bank = await bankSercive.deleteBank(id);
+    await bankSercive.deleteBank(id);
 
-    // validade data
-    // push to service
-    // respond
-    //{ id, shortenName, name, user, createdAt, updatedAt }
     return response.status(200).json({message: 'deleted'});
   }
 }

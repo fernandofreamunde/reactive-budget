@@ -1,9 +1,8 @@
-import { Request, Response } from 'express'
+import { Request, Response } from 'express';
 import TokenService from '../Service/TokenService';
-import currentAccount from '../Infrastructure/currentAccount'
-import Account from '../Entity/Account';
+import currentAccount from '../Infrastructure/currentAccount';
 
-const accessMiddleware = (req: Request, resp: Response, next:Function) => {
+const accessMiddleware = async (req: Request, resp: Response, next:Function) => {
 
     console.log('Request logged:', req.method, req.path);
 
@@ -29,7 +28,7 @@ const accessMiddleware = (req: Request, resp: Response, next:Function) => {
       return;
     }
 
-    const account = tokenService.getUserAccount(token);
+    const account = await tokenService.getUserAccount(token);
     currentAccount.setAccount(account);
 
     resp.setHeader('new-token', tokenService.refreshToken(token));
