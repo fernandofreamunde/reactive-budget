@@ -2,7 +2,6 @@ import { getManager } from "typeorm";
 import bcrypt from "bcrypt";
 import Account from "../Entity/Account";
 import AccountRepository from "../repository/AccountRepository";
-import TokenService from "./TokenService";
 
 export default class AccountService {
   private accountRepository:AccountRepository;

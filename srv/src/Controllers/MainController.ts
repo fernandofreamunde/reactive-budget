@@ -3,7 +3,7 @@ import sendmail from '../Infrastructure/mailer';
 
 export default {
   async index(request: Request, response: Response) {
-    sendmail();
+   // sendmail();
     return response.status(200).json({"cenas": "claras"});
   }
 }
