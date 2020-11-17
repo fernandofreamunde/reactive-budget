@@ -36,7 +36,7 @@ so far this should be all that is needed. Note the project is not finished...
 
 - [x] Add Recource Bank | actions: CRUD | format: { id, shortenName, name, user, createdAt, updatedAt }
 - [x] Add Recource Category | actions: CRUD | format: { id, name, user, createdAt, updatedAt }
-- [ ] Add Recource Transaction | actions: CRUD | format: { id, shortenName, name, user, createdAt, updatedAt }
+- [x] Add Recource Transaction | actions: CRUD | format: { id, date, description, category, bank, amount, user, createdAt, updatedAt }
 - [ ] Validate the data on all resources...
 - [ ] add views/DTO for the outside world
 
