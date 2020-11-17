@@ -17,6 +17,8 @@ Requirements: have npm, yarn and docker set up on your machine. then follow the 
 
 - [ ] Clone the repo
 - [ ] run the following command to setup your database container with docker: `docker run --name reactive-sql -p 3306:3306 -e MYSQL_DATABASE=reactive -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql --default-authentication-plugin=mysql_native_password`
+- [ ] copy `.env.dist` to `.env` 
+- [ ] copy `.ormconfig.json.dist` to `.ormconfig.json` 
 - [ ] move to `/srv` and run `yarn install` 
 - [ ] then run `yarn typeorm migration:run`
 - [ ] then to have the backend running run `yarn serve`
@@ -33,8 +35,10 @@ so far this should be all that is needed. Note the project is not finished...
 # To do
 
 - [x] Add Recource Bank | actions: CRUD | format: { id, shortenName, name, user, createdAt, updatedAt }
-- [ ] Add Recource Category | actions: CRUD | format: { id, name, user, createdAt, updatedAt }
+- [x] Add Recource Category | actions: CRUD | format: { id, name, user, createdAt, updatedAt }
 - [ ] Add Recource Transaction | actions: CRUD | format: { id, shortenName, name, user, createdAt, updatedAt }
+- [ ] Validate the data on all resources...
+- [ ] add views/DTO for the outside world
 
 
 #### Links 
