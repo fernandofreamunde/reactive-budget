@@ -1,6 +1,6 @@
 import { getManager } from "typeorm";
 import Account from "../Entity/Account";
-import { Bank } from "../Entity/Bank";
+import Bank from "../Entity/Bank";
 import BankRepository from "../repository/BankRepository";
 
 export default class BankService {
@@ -66,5 +66,12 @@ export default class BankService {
 
     const em = getManager();
     await em.delete(Bank, bankId);
+  }
+
+  /**
+   * getBankById
+   */
+  public async getBankById(id:string) {
+    return <Bank> await this.bankRepository.findBankById(id);
   }
 }

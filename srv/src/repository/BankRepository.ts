@@ -1,5 +1,5 @@
 import { EntityManager, getManager, getRepository, Repository } from "typeorm";
-import { Bank } from "../Entity/Bank";
+import Bank from "../Entity/Bank";
 import currentAccount from "../Infrastructure/currentAccount";
 
 export default class BankRepository {
