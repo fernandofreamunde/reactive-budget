@@ -1,6 +1,4 @@
-import { exit } from "process";
 import { EntityManager, getManager, getRepository, Repository } from "typeorm";
-import Account from "../Entity/Account";
 import { Bank } from "../Entity/Bank";
 import currentAccount from "../Infrastructure/currentAccount";
 
