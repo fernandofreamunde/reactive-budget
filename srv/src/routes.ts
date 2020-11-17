@@ -3,6 +3,7 @@ import MainController from "./Controllers/MainController";
 import AccountController from "./Controllers/AccountController";
 import BankController from "./Controllers/BankController";
 import CategoryController from "./Controllers/CategoryController";
+import TransactionController from "./Controllers/TransactionController";
 
 
 const routes = Router();
@@ -26,5 +27,11 @@ routes.get('/category', CategoryController.read);
 routes.post('/category', CategoryController.create);
 routes.put('/category/:id', CategoryController.update);
 routes.delete('/category/:id', CategoryController.delete);
+
+// transaction
+routes.get('/transaction', TransactionController.read);
+routes.post('/transaction', TransactionController.create);
+routes.put('/transaction/:id', TransactionController.update);
+routes.delete('/transaction/:id', TransactionController.delete);
 
 export default routes;

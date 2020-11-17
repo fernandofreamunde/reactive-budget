@@ -2,7 +2,7 @@ import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typ
 import Account from "./Account";
 
 @Entity()
-export class Category {
+export default class Category {
   //format: { id, name, user, createdAt, updatedAt }
   @PrimaryGeneratedColumn("uuid")
   id: string;

@@ -1,6 +1,6 @@
 import { getManager } from "typeorm";
 import Account from "../Entity/Account";
-import { Category } from "../Entity/Category";
+import Category from "../Entity/Category";
 import CategoryRepository from "../repository/CategoryRepository";
 
 export default class CategoryService {
@@ -60,5 +60,12 @@ export default class CategoryService {
 
     const em = getManager();
     await em.delete(Category, categoryId);
+  }
+
+  /**
+   * getCategoryById
+   */
+  public async getCategoryById(id:string) {
+    return <Category> await this.categoryRepository.findCategoryById(id);
   }
 }

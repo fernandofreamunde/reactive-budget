@@ -1,6 +1,6 @@
 import { EntityManager, getManager, getRepository, Repository } from "typeorm";
 import currentAccount from "../Infrastructure/currentAccount";
-import { Category } from "../Entity/Category";
+import Category from "../Entity/Category";
 
 export default class CategoryRepository {
   private repository: Repository<Category>;
