@@ -1,44 +1,44 @@
 import { EntityManager, getManager, getRepository, Repository } from "typeorm";
-import { Bank } from "../Entity/Bank";
 import currentAccount from "../Infrastructure/currentAccount";
+import { Category } from "../Entity/Category";
 
-export default class BankRepository {
-  private repository: Repository<Bank>;
+export default class CategoryRepository {
+  private repository: Repository<Category>;
   private entityManager: EntityManager;
 
   constructor() {
-    this.repository = getRepository(Bank);
+    this.repository = getRepository(Category);
     this.entityManager = getManager();
   }
 
   /**
    * findBankByName
    */
-  public findBankByName(name:string): Promise<Bank | undefined> {
+  public findCategoryByName(name:string): Promise<Category | undefined> {
     const accountId = currentAccount.getAccount().id;
     return this.entityManager
-      .createQueryBuilder(Bank, 'bank')
-      .where("bank.name = :name", { name })
-      .andWhere("bank.account = :accountId", { accountId })
+      .createQueryBuilder(Category, 'category')
+      .where("category.name = :name", { name })
+      .andWhere("category.account = :accountId", { accountId })
       .getOne();
   }
 
   /**
    * findBankByEmail
    */
-  public findBankById(id:string): Promise<Bank | undefined> {
+  public findCategoryById(id:string): Promise<Category | undefined> {
     const accountId = currentAccount.getAccount().id;
     return this.entityManager
-      .createQueryBuilder(Bank, 'bank')
-      .where("bank.id = :id", { id })
-      .andWhere("bank.account = :accountId", { accountId })
+      .createQueryBuilder(Category, 'category')
+      .where("category.id = :id", { id })
+      .andWhere("category.account = :accountId", { accountId })
       .getOne();
   }
 
   /**
    * findAll
    */
-  public async findAll(): Promise<Bank[] | undefined> {
+  public async findAll(): Promise<Category[] | undefined> {
     const account = currentAccount.getAccount().id;
     // Leaving this here it can be useful in the future since it works
     // console.log(await this.repository.find({
@@ -47,8 +47,8 @@ export default class BankRepository {
   
     // }))
     return await this.entityManager
-      .createQueryBuilder(Bank, 'bank')
-      .andWhere("bank.account = :account", { account })
+      .createQueryBuilder(Category, 'category')
+      .andWhere("category.account = :account", { account })
       .getMany();
   }
 }
