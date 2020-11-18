@@ -34,11 +34,22 @@ so far this should be all that is needed. Note the project is not finished...
 
 # To do
 
+### Server Side
+
 - [x] Add Recource Bank | actions: CRUD | format: { id, shortenName, name, user, createdAt, updatedAt }
 - [x] Add Recource Category | actions: CRUD | format: { id, name, user, createdAt, updatedAt }
 - [x] Add Recource Transaction | actions: CRUD | format: { id, date, description, category, bank, amount, user, createdAt, updatedAt }
 - [ ] Validate the data on all resources...
 - [ ] add views/DTO for the outside world
+- [ ] add Tests... these should have been added from the beginning but I am learning soooo... :P 
+- [ ] refactor, I dont fully like the architecture I have at the moment...
+### Web Side
+
+- [ ] Connect to the Server
+- [ ] add Recources classes
+- [ ] Remove the many pages and make it scrollable
+- [ ] double check the css
+- [ ] Change alert for validation... 
 
 
 #### Links 
