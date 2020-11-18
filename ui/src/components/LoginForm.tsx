@@ -1,17 +1,25 @@
 import React, { FormEvent, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import api from '../services/api';
 
 export default function LoginForm() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
 
-  function handleSubmit(event:FormEvent) {
+  async function handleSubmit(event:FormEvent) {
     event.preventDefault();
 
     console.log({
       email,
       password
     });
+
+    const response = await api.post('account/login', {email, password});
+    console.log(response.data.token);
+    //alert('Registred Sucessfully, you can login now.');
+    return;
   }
 
   return (

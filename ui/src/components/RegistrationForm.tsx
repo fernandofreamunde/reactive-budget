@@ -1,12 +1,15 @@
 import React, { FormEvent, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import api from '../services/api';
 
 export default function RegistrationForm() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  const history = useHistory();
 
-  function handleSubmit(event:FormEvent) {
+  async function handleSubmit(event:FormEvent) {
     event.preventDefault();
 
     if (password !== passwordConfirm) {
@@ -14,10 +17,11 @@ export default function RegistrationForm() {
       return;
     }
 
-    console.log({
-      email,
-      password
-    });
+    await api.post('account/registration', {email, password});
+    alert('Registred Sucessfully, you can login now.');
+
+    history.push('/login');
+    return;
   }
 
   return (
