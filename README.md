@@ -45,7 +45,7 @@ so far this should be all that is needed. Note the project is not finished...
 - [ ] refactor, I dont fully like the architecture I have at the moment...
 ### Web Side
 
-- [ ] Connect to the Server
+- [x] Connect to the Server
 - [ ] add Recources classes
 - [ ] Remove the many pages and make it scrollable
 - [ ] double check the css
