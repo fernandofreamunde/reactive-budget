@@ -1,5 +1,6 @@
 import React, { FormEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import AccountResource from '../services/AccountResource';
 import api from '../services/api';
 
 export default function RegistrationForm() {
@@ -17,7 +18,8 @@ export default function RegistrationForm() {
       return;
     }
 
-    await api.post('account/registration', {email, password});
+    const accountResource = new AccountResource();
+    accountResource.register({email, password});
     alert('Registred Sucessfully, you can login now.');
 
     history.push('/login');

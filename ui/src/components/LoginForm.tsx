@@ -1,6 +1,8 @@
 import React, { FormEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import api from '../services/api';
+import AccountResource from '../services/AccountResource';
+import BankResource from '../services/BankResource';
 
 export default function LoginForm() {
 
@@ -16,8 +18,13 @@ export default function LoginForm() {
       password
     });
 
-    const response = await api.post('account/login', {email, password});
-    console.log(response.data.token);
+    const accountResource = new AccountResource();
+    accountResource.login({email, password}).then(() =>{
+      history.push('lists');
+    })
+
+    
+    //console.log(response.data.token);
     //alert('Registred Sucessfully, you can login now.');
     return;
   }
