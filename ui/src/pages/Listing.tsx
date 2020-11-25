@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FiMinus, FiPlus } from 'react-icons/fi';
 import Sidebar from '../components/Sidebar';
+import BankResource from '../resources/BankResource';
+import CategoryResource from '../resources/CategoryResource';
 import '../styles/components/dataview.css';
 
 interface Entry {
@@ -14,8 +16,21 @@ interface Entry {
 
 function Listing() {
   const [entries, setEntries] = useState<Entry[]>();
+  const [banks, setBanks] = useState<BankResource[]>()
+  const [categories, setCategories] = useState<CategoryResource[]>()
 
   useEffect(() => {
+    const bank = new BankResource();
+    bank.list().then(response => {
+      setBanks(response);
+    });
+
+    const category = new CategoryResource();
+    category.list().then(response => {
+      setCategories(response);
+    });
+
+
     let ent = {
       id: 'someId',
       date: new Date(),

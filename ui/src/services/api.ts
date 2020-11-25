@@ -34,6 +34,28 @@ class Api {
   }
 
   /**
+   * doPut
+   */
+  public async doPut(target:Endpoint) 
+  {
+    const response = await this.api.put(target.url, target.data);
+
+    this.refreshToken(response);
+    return response;
+  }
+
+  /**
+   * doDelete
+   */
+  public async doDelete(target:Endpoint) 
+  {
+    const response = await this.api.delete(target.url);
+
+    this.refreshToken(response);
+    return response;
+  }
+
+  /**
    * doPost
    */
   public async doGet(target:Endpoint)

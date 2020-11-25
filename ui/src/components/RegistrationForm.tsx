@@ -1,7 +1,6 @@
 import React, { FormEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import AccountResource from '../services/AccountResource';
-import api from '../services/api';
+import AccountResource from '../resources/AccountResource';
 
 export default function RegistrationForm() {
 
