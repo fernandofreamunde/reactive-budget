@@ -39,7 +39,8 @@ export default class TokenService {
   /**
    * verifyToken
    */
-  public verifyToken(token:string) {
+  public verifyToken(token:string)
+  {
     console.log('Verifying token...')
     let payload: Jwt;
     try{
@@ -63,8 +64,8 @@ export default class TokenService {
   /**
    * getUserAccount
    */
-  public async getUserAccount(token:string): Promise<Account> {
-    
+  public async getUserAccount(token:string): Promise<Account> 
+  {    
     const jwt: Jwt = this.getJwt(token);
     const accountRepo = new AccountRepository();
 
@@ -74,7 +75,8 @@ export default class TokenService {
   /**
    * refreshToken
    */
-  public refreshToken(oldTokenString:string) {
+  public refreshToken(oldTokenString:string) 
+  {
     const oldToken = <Jwt> jwt.verify(oldTokenString, this.secret_key);
     const now = new Date();
 
@@ -92,7 +94,8 @@ export default class TokenService {
     return token;
   }
 
-  private getJwt(token:string): Jwt {
+  private getJwt(token:string): Jwt 
+  {
     return <Jwt> jwt.verify(token, this.secret_key);
   }
 }

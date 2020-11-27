@@ -17,13 +17,10 @@ export default function LoginForm() {
     });
 
     const accountResource = new AccountResource();
-    accountResource.login({email, password}).then(() =>{
+    accountResource.login({email, password}).then(() => {
       history.push('lists');
-    })
-
+    });
     
-    //console.log(response.data.token);
-    //alert('Registred Sucessfully, you can login now.');
     return;
   }
 
