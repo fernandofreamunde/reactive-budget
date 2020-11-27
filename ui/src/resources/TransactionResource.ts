@@ -36,6 +36,48 @@ export default class TransactionResource
       this.updatedAt = transaction.updatedAt;
     }
   }
+
+  /**
+   * getId
+   */
+  public getId() {
+    return this.id;
+  }
+
+  /**
+   * getDate
+   */
+  public getDate() {
+    return this.date ?? new Date();
+  }
+
+  /**
+   * getDescription
+   */
+  public getDescription() {
+    return this.description;
+  }
+
+  /**
+   * getAmount
+   */
+  public getAmount() {
+    return this.amount;
+  }
+
+  /**
+   * getCategory
+   */
+  public getCategory() {
+    return this.category;
+  }
+
+  /**
+   * getBank
+   */
+  public getBank() {
+    return this.bank;
+  }
   
   /**
    * list

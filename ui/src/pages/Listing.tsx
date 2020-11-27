@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { FiMinus, FiPlus } from 'react-icons/fi';
+import NumberFormat from 'react-number-format';
 import Sidebar from '../components/Sidebar';
 import BankResource from '../resources/BankResource';
 import CategoryResource from '../resources/CategoryResource';
+import TransactionResource from '../resources/TransactionResource';
 import '../styles/components/dataview.css';
+import { useHistory } from 'react-router-dom';
 
 interface Entry {
   id: string,
@@ -16,13 +19,17 @@ interface Entry {
 
 function Listing() {
   const [entries, setEntries] = useState<Entry[]>();
-  const [banks, setBanks] = useState<BankResource[]>()
-  const [categories, setCategories] = useState<CategoryResource[]>()
+  const [banks, setBanks] = useState<BankResource[]>();
+  const [categories, setCategories] = useState<CategoryResource[]>();
+  const [transactions, setTransactions] = useState<TransactionResource[]>([]);
+  const history = useHistory();
 
   useEffect(() => {
     const bank = new BankResource();
     bank.list().then(response => {
       setBanks(response);
+    }).catch(() => {
+      history.push('login');
     });
 
     const category = new CategoryResource();
@@ -30,7 +37,11 @@ function Listing() {
       setCategories(response);
     });
 
-
+    const transaction = new TransactionResource();
+    transaction.list().then(response => {
+      setTransactions(response);
+    });
+    
     let ent = {
       id: 'someId',
       date: new Date(),
@@ -72,21 +83,29 @@ function Listing() {
 
       <div>
         <div className="entriesList">
-          {entries.map(entry =>{
+          {transactions.map(entry =>{
             return (
-              <div key={entry.id} className="entry" >
-                <span>{entry.date.getDay() +'-'+entry.date.getMonth() +'-'+entry.date.getFullYear()}</span>
-                <span>{entry.description}</span>
-                <span>{entry.type}</span>
-                <span>{entry.bank}</span>
-                <span>{entry.amount}</span>
+              <div key={entry.getId()} className="entry" >
+                <span>{new Date(entry.getDate()).toLocaleDateString('pt')}</span>
+                <span>{entry.getDescription()}</span>
+                <span>{entry.getCategory()}</span>
+                <span>{entry.getBank()}</span>
+                <span> <NumberFormat 
+                 value={entry.getAmount()}
+                 isNumericString
+                 decimalScale={2}
+                 fixedDecimalScale
+                 displayType={"text"}
+                 thousandSeparator={true}
+                 suffix={" $"}
+                /></span>
               </div>
             );
           })}
         </div>
 
         <form className='entryForm'>
-          <input type='text' name='date' value='' placeholder='01-01-2020' />
+          <input type='text' name='date' value='' placeholder='01/01/2020' />
           <input type='text' name='description' value='' placeholder='supermarket' />
           <input type='text' name='type' value='' placeholder='groceries' />
           <input type='text' name='bank' value='' placeholder='ABN' />
