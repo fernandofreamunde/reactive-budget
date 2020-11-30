@@ -19,8 +19,8 @@ interface Entry {
 
 function Listing() {
   const [entries, setEntries] = useState<Entry[]>();
-  const [banks, setBanks] = useState<BankResource[]>();
-  const [categories, setCategories] = useState<CategoryResource[]>();
+  const [banks, setBanks] = useState<BankResource[]>([]);
+  const [categories, setCategories] = useState<CategoryResource[]>([]);
   const [transactions, setTransactions] = useState<TransactionResource[]>([]);
   const history = useHistory();
 
@@ -41,37 +41,9 @@ function Listing() {
     transaction.list().then(response => {
       setTransactions(response);
     });
-    
-    let ent = {
-      id: 'someId',
-      date: new Date(),
-      description: 'this is a description',
-      type: 'tyoe0',
-      bank: 'mybanc',
-      amount: 1234,
-    }
-    let ent2 = {
-      id: 'someId2',
-      date: new Date(),
-      description: 'this is a description',
-      type: 'tyoe1',
-      bank: 'mybanc',
-      amount: 1234,
-    }
-    let ent3 = {
-      id: 'someId3',
-      date: new Date(),
-      description: 'this is a description',
-      type: 'tyoe2',
-      bank: 'mybanc',
-      amount: 1234,
-    }
-    setTimeout(() => {
-      setEntries([ent,ent2,ent3].reverse());
-    }, 123);
   }, []);
 
-  if (!entries) {
+  if (!transactions) {
     return <h1>loading....</h1>
   }
 
@@ -88,8 +60,8 @@ function Listing() {
               <div key={entry.getId()} className="entry" >
                 <span>{new Date(entry.getDate()).toLocaleDateString('pt')}</span>
                 <span>{entry.getDescription()}</span>
-                <span>{entry.getCategory()}</span>
-                <span>{entry.getBank()}</span>
+                <span>{ categories.filter((category:CategoryResource) => { return category.getId() === entry.getCategory()})[0].getName() }</span>
+                <span>{ banks.filter((bank:BankResource) => { return bank.getId() === entry.getBank()})[0].getShortName() }</span>
                 <span> <NumberFormat 
                  value={entry.getAmount()}
                  isNumericString

@@ -67,6 +67,29 @@ export default class BankResource {
     return await api.doDelete({url:'/bank/' + this.id});
   }
 
+  /**
+   * getId
+   */
+  public getId() {
+    return this.id;
+  }
+
+  /**
+   * getName
+   */
+  public getName() {
+    return this.name;
+  }
+
+
+  /**
+   * getShortName
+   */
+  public getShortName() {
+    return this.shortName;
+  }
+
+
   private createFromResponse(input: BankInput) 
   {
     return new BankResource(input);

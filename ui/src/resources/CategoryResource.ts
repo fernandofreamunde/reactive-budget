@@ -62,6 +62,20 @@ export default class CategoryResource {
     return await api.doDelete({url:'/category/' + this.id});
   }
 
+  /**
+   * getId
+   */
+  public getId() {
+    return this.id;
+  }
+
+  /**
+   * getName
+   */
+  public getName() {
+    return this.name;
+  }
+
   private createFromResponse(input: CategoryInput) {
     return new CategoryResource(input);
   }

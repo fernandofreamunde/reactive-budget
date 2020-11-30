@@ -28,11 +28,15 @@ export default class TransactionRepository {
    */
   public findTransactionById(id:string): Promise<Transaction | undefined> {
     const accountId = currentAccount.getAccount().id;
-    return this.entityManager
-      .createQueryBuilder(Transaction, 'transaction')
-      .where("transaction.id = :id", { id })
-      .andWhere("transaction.account = :accountId", { accountId })
-      .getOne();
+    return this.repository.findOneOrFail(id, {
+      relations:['account', 'bank', 'category'],
+      where: { account: accountId }
+    });
+    // return this.entityManager
+    //   .createQueryBuilder(Transaction, 'transaction')
+    //   .where("transaction.id = :id", { id })
+    //   .andWhere("transaction.account = :accountId", { accountId })
+    //   .getOne();
   }
 
   /**
@@ -40,15 +44,14 @@ export default class TransactionRepository {
    */
   public async findAll(): Promise<Transaction[] | undefined> {
     const account = currentAccount.getAccount().id;
+    return await this.repository.find({
+      relations:['bank', 'category'],
+      where: { account: account }
+    });
     // Leaving this here it can be useful in the future since it works
-    // console.log(await this.repository.find({
-    //   relations: ['account'],
-    //   where: { account: account }
-  
-    // }))
-    return await this.entityManager
-      .createQueryBuilder(Transaction, 'transaction')
-      .andWhere("transaction.account = :account", { account })
-      .getMany();
+    // return await this.entityManager
+    //   .createQueryBuilder(Transaction, 'transaction')
+    //   .andWhere("transaction.account = :account", { account })
+    //   .getMany();
   }
 }

@@ -5,10 +5,24 @@ interface TransactionInput {
   date: Date;
   description: string;
   amount: number;
-  category: string;
-  bank: string;
+  category: Category;
+  bank: Bank;
   createdAt: Date;
   updatedAt: Date;
+}
+interface Bank {
+  id: string,
+  name: String,
+  shortName: String,
+  createdAt: String,
+  updatedAt: number,
+}
+
+interface Category {
+  id: string,
+  name: String,
+  createdAt: String,
+  updatedAt: number,
 }
 
 export default class TransactionResource
@@ -30,8 +44,8 @@ export default class TransactionResource
       this.date = transaction.date;
       this.description = transaction.description;
       this.amount = transaction.amount;
-      this.category = transaction.category;
-      this.bank = transaction.bank;
+      this.category = transaction.category.id;
+      this.bank = transaction.bank.id;
       this.createdAt = transaction.createdAt;
       this.updatedAt = transaction.updatedAt;
     }
