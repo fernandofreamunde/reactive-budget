@@ -106,3 +106,7 @@
   display: block;
   width: 100%;
 }
+
+.react-datepicker-wrapper {
+  max-width: 8em;
+}
