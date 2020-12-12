@@ -5,8 +5,10 @@ import Sidebar from '../components/Sidebar';
 import BankResource from '../resources/BankResource';
 import CategoryResource from '../resources/CategoryResource';
 import TransactionResource from '../resources/TransactionResource';
+import "react-datepicker/dist/react-datepicker.css";
 import '../styles/components/dataview.css';
 import { useHistory } from 'react-router-dom';
+import ReactDatePicker from 'react-datepicker';
 
 interface Entry {
   id: string,
@@ -23,6 +25,15 @@ function Listing() {
   const [categories, setCategories] = useState<CategoryResource[]>([]);
   const [transactions, setTransactions] = useState<TransactionResource[]>([]);
   const history = useHistory();
+  // form fields
+  const [newTransactionDate, setNewTransactionDate] = useState<Date>(new Date);
+
+  function handleDateChange(date:Date | [Date, Date] | null) {
+    console.log('Yo date is here!', date);
+    if (date instanceof Date) {
+      setNewTransactionDate(date);
+    }
+  }
 
   useEffect(() => {
     const bank = new BankResource();
@@ -77,13 +88,18 @@ function Listing() {
         </div>
 
         <form className='entryForm'>
-          <input type='text' name='date' value='' placeholder='01/01/2020' />
+
+          <ReactDatePicker
+              dateFormat="dd/MM/yyyy"
+              selected={newTransactionDate} 
+              onChange={(date) => handleDateChange(date)}
+          />
           <input type='text' name='description' value='' placeholder='supermarket' />
           <input type='text' name='type' value='' placeholder='groceries' />
           <input type='text' name='bank' value='' placeholder='ABN' />
           <input type='text' name='amount' value='' placeholder='15.00 $' />
           <div className="buttonBox">
-            <button id='income' className='inactive'><FiPlus size='26' /></button>
+            <button id='income' className='inactive'><FiPlus size='26' /></button>  
             <button id='expense'><FiMinus size='26' /></button>
           </div>
         </form>
