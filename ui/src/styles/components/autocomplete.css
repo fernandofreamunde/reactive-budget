@@ -1,0 +1,19 @@
+#Autocomplete {
+  position: relative;
+  max-height: 3em;
+}
+
+#Autocomplete .wrapper {
+  position: absolute;
+  overflow-y: scroll;
+  max-height: 9em;
+  background-color: #f5f8fa;
+  color: black;
+  width: 10em;
+  border-radius: 0px 0px 20px 20px;
+}
+
+#Autocomplete .suggestion {
+  padding: 0.4em 01em;
+  cursor: default;
+}
