@@ -13,16 +13,20 @@
   border-radius: 0px 0px 20px 20px;
 }
 
-#Autocomplete .wrapper::-webkit-scrollbar {
-  display: none;
-}
-
 #Autocomplete .wrapper {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
 
+#Autocomplete .wrapper::-webkit-scrollbar {
+  display: none;
+}
+
 #Autocomplete .suggestion {
   padding: 0.4em 01em;
   cursor: default;
+}
+
+#Autocomplete .suggestion:hover {
+  background-color: #e3e3e3;
 }
