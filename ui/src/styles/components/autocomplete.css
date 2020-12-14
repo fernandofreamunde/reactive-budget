@@ -6,11 +6,20 @@
 #Autocomplete .wrapper {
   position: absolute;
   overflow-y: scroll;
-  max-height: 9em;
+  max-height: 10em;
   background-color: #f5f8fa;
   color: black;
   width: 10em;
   border-radius: 0px 0px 20px 20px;
+}
+
+#Autocomplete .wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+#Autocomplete .wrapper {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 #Autocomplete .suggestion {
